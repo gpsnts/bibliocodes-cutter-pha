@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela PHA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        melon: '#FBBBAD',
+                        rosepink: "#EE8695",
+                        dullblue: "#4A7A96",
+                        bluewood: "#333F58",
+                        balticsea: "#292831"
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-balticsea">
+
+    <div class="flex items-center justify-center min-h-screen">
+        <div
+            class="bg-melon p-8 rounded-lg shadow-lg max-w-4xl w-full text-center flex flex-col md:flex-row gap-4 md:gap-6">
+            <div class="w-full overflow-x-auto">
+                <div class="flex items-center justify-between mb-4 w-full">
+                    <a href="index.html" class="bg-bluewood text-white px-4 py-2 rounded flex-1 text-center">Voltar</a>
+                    <div class="flex-1"></div>
+                    <h2 class="text-2xl font-extrabold mx-4 flex-1 text-balticsea">Tabela PHA</h2>
+                </div>
+
+                <!-- Seção de Letra A -->
+                <div class="mb-4">
+                    <button onclick="toggleVisibility('sectionA')"
+                        class="w-full bg-bluewood text-white px-4 py-2 rounded hover:bg-blue-600 text-left">
+                        Letra A
+                    </button>
+
+                    <div id="sectionA" class="hidden mt-2 text-white">
+                        <table class="w-full bg-bluewood border border-gray-300 rounded-lg shadow-md">
+                            <thead>
+                                <tr class="bg-bluewood">
+                                    <th class="py-2 px-4 text-left">Letra</th>
+                                    <th class="py-2 px-4 text-left">Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody class="aLetter">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Seção de Letra B -->
+                <div class="mb-4">
+                    <button onclick="toggleVisibility('sectionB')"
+                        class="w-full bg-bluewood text-white px-4 py-2 rounded hover:bg-blue-600 text-left">
+                        Letra B
+                    </button>
+                    <div id="sectionB" class="hidden mt-2 text-white">
+                        <table class="w-full bg-white border border-gray-300 rounded-lg shadow-md">
+                            <thead>
+                                <tr class="bg-bluewood">
+                                    <th class="py-2 px-4 text-left">Letra</th>
+                                    <th class="py-2 px-4 text-left">Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bLetter">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Seção de Letra C -->
+                <div class="mb-4">
+                    <button onclick="toggleVisibility('sectionC')"
+                        class="w-full bg-bluewood text-white px-4 py-2 rounded hover:bg-blue-600 text-left">
+                        Letra C
+                    </button>
+                    <div id="sectionC" class="hidden mt-2 text-white">
+                        <table class="w-full bg-white border border-gray-300 rounded-lg shadow-md">
+                            <thead>
+                                <tr class="bg-bluewood">
+                                    <th class="py-2 px-4 text-left">Letra</th>
+                                    <th class="py-2 px-4 text-left">Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody class="cLetter">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Seção de Letra D -->
+                <div class="mb-4">
+                    <button onclick="toggleVisibility('sectionD')"
+                        class="w-full bg-bluewood text-white px-4 py-2 rounded hover:bg-blue-600 text-left">
+                        Letra D
+                    </button>
+                    <div id="sectionD" class="hidden mt-2 text-white">
+                        <table class="w-full bg-white border border-gray-300 rounded-lg shadow-md">
+                            <thead>
+                                <tr class="bg-bluewood">
+                                    <th class="py-2 px-4 text-left">Letra</th>
+                                    <th class="py-2 px-4 text-left">Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody class="dLetter">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Seção de Letra E -->
+                <div class="mb-4">
+                    <button onclick="toggleVisibility('sectionE')"
+                        class="w-full bg-bluewood text-white px-4 py-2 rounded hover:bg-blue-600 text-left">
+                        Letra E
+                    </button>
+                    <div id="sectionE" class="hidden mt-2 text-white">
+                        <table class="w-full bg-white border border-gray-300 rounded-lg shadow-md">
+                            <thead>
+                                <tr class="bg-bluewood">
+                                    <th class="py-2 px-4 text-left">Letra</th>
+                                    <th class="py-2 px-4 text-left">Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody class="eLetter">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Seção de Letra F -->
+                <div class="mb-4">
+                    <button onclick="toggleVisibility('sectionF')"
+                        class="w-full bg-bluewood text-white px-4 py-2 rounded hover:bg-blue-600 text-left">
+                        Letra F
+                    </button>
+                    <div id="sectionF" class="hidden mt-2 text-white">
+                        <table class="w-full bg-white border border-gray-300 rounded-lg shadow-md">
+                            <thead>
+                                <tr class="bg-bluewood">
+                                    <th class="py-2 px-4 text-left">Letra</th>
+                                    <th class="py-2 px-4 text-left">Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody class="fLetter">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Seção de Letra G -->
+                <div class="mb-4">
+                    <button onclick="toggleVisibility('sectionG')"
+                        class="w-full bg-bluewood text-white px-4 py-2 rounded hover:bg-blue-600 text-left">
+                        Letra G
+                    </button>
+                    <div id="sectionG" class="hidden mt-2 text-white">
+                        <table class="w-full bg-white border border-gray-300 rounded-lg shadow-md">
+                            <thead>
+                                <tr class="bg-bluewood">
+                                    <th class="py-2 px-4 text-left">Letra</th>
+                                    <th class="py-2 px-4 text-left">Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody class="gLetter">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Seção de Letra H -->
+                <div class="mb-4">
+                    <button onclick="toggleVisibility('sectionH')"
+                        class="w-full bg-bluewood text-white px-4 py-2 rounded hover:bg-blue-600 text-left">
+                        Letra H
+                    </button>
+                    <div id="sectionH" class="hidden mt-2 text-white">
+                        <table class="w-full bg-white border border-gray-300 rounded-lg shadow-md">
+                            <thead>
+                                <tr class="bg-bluewood">
+                                    <th class="py-2 px-4 text-left">Letra</th>
+                                    <th class="py-2 px-4 text-left">Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody class="hLetter">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Seção de Letra I -->
+                <div class="mb-4">
+                    <button onclick="toggleVisibility('sectionI')"
+                        class="w-full bg-bluewood text-white px-4 py-2 rounded hover:bg-blue-600 text-left">
+                        Letra I
+                    </button>
+                    <div id="sectionI" class="hidden mt-2 text-white">
+                        <table class="w-full bg-white border border-gray-300 rounded-lg shadow-md">
+                            <thead>
+                                <tr class="bg-bluewood">
+                                    <th class="py-2 px-4 text-left">Letra</th>
+                                    <th class="py-2 px-4 text-left">Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody class="iLetter">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Seção de Letra J -->
+                <div class="mb-4">
+                    <button onclick="toggleVisibility('sectionJ')"
+                        class="w-full bg-bluewood text-white px-4 py-2 rounded hover:bg-blue-600 text-left">
+                        Letra J
+                    </button>
+                    <div id="sectionJ" class="hidden mt-2 text-white">
+                        <table class="w-full bg-white border border-gray-300 rounded-lg shadow-md">
+                            <thead>
+                                <tr class="bg-bluewood">
+                                    <th class="py-2 px-4 text-left">Letra</th>
+                                    <th class="py-2 px-4 text-left">Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody class="jLetter">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Seção de Letra K -->
+                <div class="mb-4">
+                    <button onclick="toggleVisibility('sectionK')"
+                        class="w-full bg-bluewood text-white px-4 py-2 rounded hover:bg-blue-600 text-left">
+                        Letra K
+                    </button>
+                    <div id="sectionK" class="hidden mt-2 text-white">
+                        <table class="w-full bg-white border border-gray-300 rounded-lg shadow-md">
+                            <thead>
+                                <tr class="bg-bluewood">
+                                    <th class="py-2 px-4 text-left">Letra</th>
+                                    <th class="py-2 px-4 text-left">Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody class="kLetter">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Seção de Letra L -->
+                <div class="mb-4">
+                    <button onclick="toggleVisibility('sectionL')"
+                        class="w-full bg-bluewood text-white px-4 py-2 rounded hover:bg-blue-600 text-left">
+                        Letra L
+                    </button>
+                    <div id="sectionL" class="hidden mt-2 text-white">
+                        <table class="w-full bg-white border border-gray-300 rounded-lg shadow-md">
+                            <thead>
+                                <tr class="bg-bluewood">
+                                    <th class="py-2 px-4 text-left">Letra</th>
+                                    <th class="py-2 px-4 text-left">Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody class="lLetter">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Seção de Letra M -->
+                <div class="mb-4">
+                    <button onclick="toggleVisibility('sectionM')"
+                        class="w-full bg-bluewood text-white px-4 py-2 rounded hover:bg-blue-600 text-left">
+                        Letra M
+                    </button>
+                    <div id="sectionM" class="hidden mt-2 text-white">
+                        <table class="w-full bg-white border border-gray-300 rounded-lg shadow-md">
+                            <thead>
+                                <tr class="bg-bluewood">
+                                    <th class="py-2 px-4 text-left">Letra</th>
+                                    <th class="py-2 px-4 text-left">Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody class="mLetter">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Seção de Letra N -->
+                <div class="mb-4">
+                    <button onclick="toggleVisibility('sectionN')"
+                        class="w-full bg-bluewood text-white px-4 py-2 rounded hover:bg-blue-600 text-left">
+                        Letra N
+                    </button>
+                    <div id="sectionN" class="hidden mt-2 text-white">
+                        <table class="w-full bg-white border border-gray-300 rounded-lg shadow-md">
+                            <thead>
+                                <tr class="bg-bluewood">
+                                    <th class="py-2 px-4 text-left">Letra</th>
+                                    <th class="py-2 px-4 text-left">Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody class="nLetter">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Seção de Letra O -->
+                <div class="mb-4">
+                    <button onclick="toggleVisibility('sectionO')"
+                        class="w-full bg-bluewood text-white px-4 py-2 rounded hover:bg-blue-600 text-left">
+                        Letra O
+                    </button>
+                    <div id="sectionO" class="hidden mt-2 text-white">
+                        <table class="w-full bg-white border border-gray-300 rounded-lg shadow-md">
+                            <thead>
+                                <tr class="bg-bluewood">
+                                    <th class="py-2 px-4 text-left">Letra</th>
+                                    <th class="py-2 px-4 text-left">Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody class="oLetter">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Seção de Letra P -->
+                <div class="mb-4">
+                    <button onclick="toggleVisibility('sectionP')"
+                        class="w-full bg-bluewood text-white px-4 py-2 rounded hover:bg-blue-600 text-left">
+                        Letra P
+                    </button>
+                    <div id="sectionP" class="hidden mt-2 text-white">
+                        <table class="w-full bg-white border border-gray-300 rounded-lg shadow-md">
+                            <thead>
+                                <tr class="bg-bluewood">
+                                    <th class="py-2 px-4 text-left">Letra</th>
+                                    <th class="py-2 px-4 text-left">Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody class="pLetter">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Seção de Letra Q -->
+                <div class="mb-4">
+                    <button onclick="toggleVisibility('sectionQ')"
+                        class="w-full bg-bluewood text-white px-4 py-2 rounded hover:bg-blue-600 text-left">
+                        Letra Q
+                    </button>
+                    <div id="sectionQ" class="hidden mt-2 text-white">
+                        <table class="w-full bg-white border border-gray-300 rounded-lg shadow-md">
+                            <thead>
+                                <tr class="bg-bluewood">
+                                    <th class="py-2 px-4 text-left">Letra</th>
+                                    <th class="py-2 px-4 text-left">Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody class="qLetter">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Seção de Letra R -->
+                <div class="mb-4">
+                    <button onclick="toggleVisibility('sectionR')"
+                        class="w-full bg-bluewood text-white px-4 py-2 rounded hover:bg-blue-600 text-left">
+                        Letra R
+                    </button>
+                    <div id="sectionR" class="hidden mt-2 text-white">
+                        <table class="w-full bg-white border border-gray-300 rounded-lg shadow-md">
+                            <thead>
+                                <tr class="bg-bluewood">
+                                    <th class="py-2 px-4 text-left">Letra</th>
+                                    <th class="py-2 px-4 text-left">Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rLetter">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Seção de Letra S -->
+                <div class="mb-4">
+                    <button onclick="toggleVisibility('sectionS')"
+                        class="w-full bg-bluewood text-white px-4 py-2 rounded hover:bg-blue-600 text-left">
+                        Letra S
+                    </button>
+                    <div id="sectionS" class="hidden mt-2 text-white">
+                        <table class="w-full bg-white border border-gray-300 rounded-lg shadow-md">
+                            <thead>
+                                <tr class="bg-bluewood">
+                                    <th class="py-2 px-4 text-left">Letra</th>
+                                    <th class="py-2 px-4 text-left">Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody class="sLetter">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Seção de Letra T -->
+                <div class="mb-4">
+                    <button onclick="toggleVisibility('sectionT')"
+                        class="w-full bg-bluewood text-white px-4 py-2 rounded hover:bg-blue-600 text-left">
+                        Letra T
+                    </button>
+                    <div id="sectionT" class="hidden mt-2 text-white">
+                        <table class="w-full bg-white border border-gray-300 rounded-lg shadow-md">
+                            <thead>
+                                <tr class="bg-bluewood">
+                                    <th class="py-2 px-4 text-left">Letra</th>
+                                    <th class="py-2 px-4 text-left">Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody class="tLetter">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Seção de Letra U -->
+                <div class="mb-4">
+                    <button onclick="toggleVisibility('sectionU')"
+                        class="w-full bg-bluewood text-white px-4 py-2 rounded hover:bg-blue-600 text-left">
+                        Letra U
+                    </button>
+                    <div id="sectionU" class="hidden mt-2 text-white">
+                        <table class="w-full bg-white border border-gray-300 rounded-lg shadow-md">
+                            <thead>
+                                <tr class="bg-bluewood">
+                                    <th class="py-2 px-4 text-left">Letra</th>
+                                    <th class="py-2 px-4 text-left">Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody class="uLetter">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Seção de Letra V -->
+                <div class="mb-4">
+                    <button onclick="toggleVisibility('sectionV')"
+                        class="w-full bg-bluewood text-white px-4 py-2 rounded hover:bg-blue-600 text-left">
+                        Letra V
+                    </button>
+                    <div id="sectionV" class="hidden mt-2 text-white">
+                        <table class="w-full bg-white border border-gray-300 rounded-lg shadow-md">
+                            <thead>
+                                <tr class="bg-bluewood">
+                                    <th class="py-2 px-4 text-left">Letra</th>
+                                    <th class="py-2 px-4 text-left">Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody class="vLetter">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Seção de Letra W -->
+                <div class="mb-4">
+                    <button onclick="toggleVisibility('sectionW')"
+                        class="w-full bg-bluewood text-white px-4 py-2 rounded hover:bg-blue-600 text-left">
+                        Letra W
+                    </button>
+                    <div id="sectionW" class="hidden mt-2 text-white">
+                        <table class="w-full bg-white border border-gray-300 rounded-lg shadow-md">
+                            <thead>
+                                <tr class="bg-bluewood">
+                                    <th class="py-2 px-4 text-left">Letra</th>
+                                    <th class="py-2 px-4 text-left">Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody class="wLetter">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Seção de Letra X -->
+                <div class="mb-4">
+                    <button onclick="toggleVisibility('sectionX')"
+                        class="w-full bg-bluewood text-white px-4 py-2 rounded hover:bg-blue-600 text-left">
+                        Letra X
+                    </button>
+                    <div id="sectionX" class="hidden mt-2 text-white">
+                        <table class="w-full bg-white border border-gray-300 rounded-lg shadow-md">
+                            <thead>
+                                <tr class="bg-bluewood">
+                                    <th class="py-2 px-4 text-left">Letra</th>
+                                    <th class="py-2 px-4 text-left">Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody class="xLetter">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Seção de Letra Y -->
+                <div class="mb-4">
+                    <button onclick="toggleVisibility('sectionY')"
+                        class="w-full bg-bluewood text-white px-4 py-2 rounded hover:bg-blue-600 text-left">
+                        Letra Y
+                    </button>
+                    <div id="sectionY" class="hidden mt-2 text-white">
+                        <table class="w-full bg-white border border-gray-300 rounded-lg shadow-md">
+                            <thead>
+                                <tr class="bg-bluewood">
+                                    <th class="py-2 px-4 text-left">Letra</th>
+                                    <th class="py-2 px-4 text-left">Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody class="yLetter">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Seção de Letra Z -->
+                <div class="mb-4">
+                    <button onclick="toggleVisibility('sectionZ')"
+                        class="w-full bg-bluewood text-white px-4 py-2 rounded hover:bg-blue-600 text-left">
+                        Letra Z
+                    </button>
+                    <div id="sectionZ" class="hidden mt-2 text-white">
+                        <table class="w-full bg-white border border-gray-300 rounded-lg shadow-md">
+                            <thead>
+                                <tr class="bg-bluewood">
+                                    <th class="py-2 px-4 text-left">Letra</th>
+                                    <th class="py-2 px-4 text-left">Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody class="zLetter">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleVisibility(sectionId) {
+            const section = document.getElementById(sectionId);
+            section.classList.toggle('hidden');
+        }
+
+        async function fetchData() {
+            try {
+                const response = await fetch("tabela_pha.json");
+                const data = await response.json();
+
+                for (let [letter, values] of Object.entries(data)) {
+                    const tBodyLetter = document.querySelector(`.${letter.toLowerCase()}Letter`);
+
+                    if (tBodyLetter) {
+                        tBodyLetter.innerHTML = '';
+
+                        for (let [key, value] of Object.entries(values)) {
+                            const row = document.createElement('tr');
+
+                            row.classList.add('bg-bluewood');
+
+                            const keyCell = document.createElement('td');
+                            keyCell.classList.add('py-2', 'px-4', 'border-t', 'text-left');
+                            keyCell.textContent = key;
+
+                            const valueCell = document.createElement('td');
+                            valueCell.classList.add('py-2', 'px-4', 'border-t', 'text-left');
+                            valueCell.textContent = value;
+
+                            row.appendChild(keyCell);
+                            row.appendChild(valueCell);
+
+                            tBodyLetter.appendChild(row);
+                        }
+                    }
+                }
+
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        fetchData();
+    </script>
+
+</body>
+</html>

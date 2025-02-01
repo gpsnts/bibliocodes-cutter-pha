@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Gerador Código Cutter/PHA</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script>
+		tailwind.config = {
+			theme: {
+				extend: {
+					colors: {
+						melon: '#FBBBAD',
+						rosepink: "#EE8695",
+						dullblue: "#4A7A96",
+						bluewood: "#333F58",
+						balticsea: "#292831"
+					}
+				}
+			}
+		}
+	</script>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+		rel="stylesheet">
+	<style>
+		body {
+			font-family: 'Roboto', sans-serif;
+		}
+	</style>
+</head>
+
+<body class="bg-balticsea">
+
+	<div class="flex items-center justify-center min-h-screen">
+		<div class="bg-melon p-8 rounded-lg shadow-lg max-w-4xl w-full text-center flex flex-col gap-4">
+			<div class="flex items-center justify-between mb-4 w-full">
+				<a href="index.html" class="bg-bluewood text-white px-4 py-2 rounded flex-1 text-center">Voltar</a>
+				<div class="flex-1"></div>
+				<h2 class="text-2xl font-extrabold mx-4 flex-1 text-balticsea">Gerador de Código Cutter/PHA</h2>
+			</div>
+
+			<div class="flex flex-col items-center gap-4">
+				<div class="flex flex-col md:flex-row items-center gap-4 w-full">
+					<select name="codeType" id="codeType" class="border border-dullblue rounded px-4 py-2 flex-1">
+						<option value="cutter">Cutter</option>
+						<option value="pha">PHA</option>
+					</select>
+					<input id="search" type="text" placeholder="Digite aqui..."
+						class="border border-dullblue rounded px-4 py-2 flex-1 max-w-xs md:max-w-sm" pattern="[A-Za-z]*"
+						title="Apenas letras são permitidas">
+				</div>
+				<button onclick="buttonSearch()" class="bg-bluewood text-white px-4 py-2 rounded">Gerar Código</button>
+				<div id="result" class="text-balticsea text-2xl font-extrabold"></div>
+			</div>
+		</div>
+	</div>
+
+    <script>
+        function normalizerChar(str) {
+            // Normaliza a string para a forma NFD (Canonical Decomposition)
+            str = str.normalize('NFD');
+
+            // Remove os caracteres diacríticos (acentos, tremas, etc.)
+            str = str.replace(/[\u0300-\u036f]/g, '');
+
+            // Substitui caracteres específicos por suas equivalentes
+            const replacements = {
+                'ß': 's',
+                'æ': 'ae',
+                'œ': 'oe',
+                'ø': 'o',
+                'ð': 'd',
+                'þ': 'th',
+                'ñ': 'n',
+                'ç': 'c',
+                'å': 'a',
+                'ä': 'a',
+                'ö': 'o',
+                'ü': 'u',
+                'í': 'i',
+                'é': 'e',
+                'è': 'e',
+                'ê': 'e',
+                'ĳ': 'ij',
+                'ĸ': 'k',
+                'ŀ': 'll',
+                'ŉ': "'n",
+                'ſ': 's',
+                'α': 'a',
+                'β': 'b',
+                'γ': 'g',
+                'κ': 'k',
+                'μ': 'm',
+                'д': 'd',
+                'ж': 'zh',
+                'й': 'i',
+                'ё': 'yo',
+                '©': '(c)',
+                '®': '(r)',
+                '™': '(tm)',
+                '°': 'deg',
+                '€': 'EUR',
+                '£': 'GBP',
+                '¥': 'JPY'
+            };
+
+            // Aplica as substituições
+            for (const [char, replacement] of Object.entries(replacements)) {
+                str = str.replace(new RegExp(char, 'g'), replacement);
+            }
+
+            // Retorna a string normalizada
+            return str;
+        }
+
+        function stringNormalizer(fullString) {
+            return fullString.split(' ').map(word => normalizerChar(word)).join(' ');
+        }
+
+        function authorNameFormatter(author) {
+            return author
+                .trim()
+                .split(/[\s,]+/)
+                .map((word, index) => 
+                    index === 0
+                        ? word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+                        : word.toLowerCase()
+                )
+                .join("");
+        }
+
+        function search() {
+            // Pega o valor digitado no campo de entrada
+            const searchValue = document.getElementById('search').value;
+
+            // Pega a div onde o resultado será exibido
+            const resultDiv = document.getElementById('result');
+
+            // Define o conteúdo da div com o valor digitado
+            resultDiv.textContent = searchValue;
+        }
+
+        function search(name, table) {
+            const sanitizedAuthorName = stringNormalizer(authorNameFormatter(name));
+            const searchTable = Object.entries(table[sanitizedAuthorName[0].toUpperCase()]);
+            
+            let results = [];
+            let currentSubstring = sanitizedAuthorName[0];
+
+            for (let i = 0; i < sanitizedAuthorName.length - 1; i++) {
+                let currentResults = searchTable.filter(([key]) => key.startsWith(currentSubstring));
+
+                if (currentResults.length == 0) break;
+
+                results = currentResults;
+                currentSubstring += sanitizedAuthorName[i + 1];
+            }
+
+            if (results.length == 1) {
+                return sanitizedAuthorName[0].toUpperCase() + results[0][1];
+            }
+
+            return sanitizedAuthorName[0].toUpperCase() + resolveMultipleResults(results, currentSubstring);
+        }
+
+        function resolveMultipleResults(results, currentSubstring) {
+            const lastChar = currentSubstring.slice(-1);
+            const beforeLastChar = currentSubstring.slice(0, -1);
+
+            let beforeLastCharMatches = results.filter(([key]) => key.startsWith(beforeLastChar));
+
+            let matches = [];
+
+            // Caso previousChar seja "a", não continua a busca
+            if (lastChar.charCodeAt(0) != 97) {
+                let previousCharIdx = 1;
+                let previousCharMinusPreviousCharIdx = String.fromCharCode(lastChar.charCodeAt(0) - previousCharIdx);
+                let newSubstring = beforeLastChar + previousCharMinusPreviousCharIdx;
+
+                while (previousCharMinusPreviousCharIdx.charCodeAt(0) != 97) {
+                    let filteredResults = results.filter(([key]) => key.startsWith(newSubstring));
+
+                    if (filteredResults.length > 0) {
+                        matches = filteredResults;
+                        break;
+                    }
+
+                    previousCharIdx = previousCharIdx + 1;
+                    previousCharMinusPreviousCharIdx = String.fromCharCode(lastChar.charCodeAt(0) - previousCharIdx);
+                    newSubstring = beforeLastChar + previousCharMinusPreviousCharIdx;
+                }
+            }
+
+            if (matches.length == 0 || (matches.length == beforeLastCharMatches.length)) {
+                return beforeLastCharMatches[0][1];
+            }
+
+            return matches[matches.length - 1][1];
+        }
+
+        async function buttonSearch() {
+            const searchValue = document.getElementById('search').value;
+            const selectedTable = document.getElementById("codeType").value === 'cutter' ? await fetch("tabela_cutter.json") : await fetch("tabela_pha.json");
+            const result = search(searchValue, await selectedTable.json());
+            const resultDiv = document.getElementById('result');
+            resultDiv.textContent = result;
+        }
+    </script>
+</body>
+</html>
