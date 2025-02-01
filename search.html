@@ -152,6 +152,12 @@
             let results = [];
             let currentSubstring = sanitizedAuthorName[0];
 
+            let checkExactMatch = searchTable.filter(([key]) => key == name[0].toUpperCase() + name.slice(1).toLowerCase());
+
+            if (checkExactMatch.length == 1) {
+                return sanitizedAuthorName[0].toUpperCase() + checkExactMatch[0][1];
+            }
+
             for (let i = 0; i < sanitizedAuthorName.length - 1; i++) {
                 let currentResults = searchTable.filter(([key]) => key.startsWith(currentSubstring));
 
