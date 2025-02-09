@@ -579,7 +579,7 @@
 
         async function fetchData() {
             try {
-                const response = await fetch("tabela_pha.json");
+                const response = await fetch("tabela_pha_leitura.json");
                 const data = await response.json();
 
                 for (let [letter, values] of Object.entries(data)) {
