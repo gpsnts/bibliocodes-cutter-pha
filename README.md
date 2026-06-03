@@ -1,4 +1,6 @@
-# Bibliocodes Cutter PHA
+# Bibliocodes Cutter PHA#
+
+# IMPORTANTE: Projeto depreciado versão atualizada em [Biblicodes](https://github.com/gpsnts/bibliocodes)
 
 ## Visão geral
 
